@@ -1,0 +1,7 @@
+chess
+CairoSVG
+opencv-contrib-python
+gtts
+playsound==1.2.2
+IPython
+imageio
