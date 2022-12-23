@@ -54,6 +54,23 @@ def audio(uci, cont):
     audio.save("./audios_generate/" + name_mp3) # Save audio file
     return name_mp3
 
+# Generate video board game
+
+def gif(name_fl):
+  path = './multimedia/'
+  archivos = sorted(os.listdir(path))
+  img_array_png = []
+  #Leer todos los archivos formato imagen desde path
+  for x in range(0, len(archivos)):
+      nomArchivo = archivos[x]
+      dirArchivo = path + str(nomArchivo)
+      # Asignar a variable leer_imagen, el nombre de cada imagen
+      leer_imagen = imageio.imread(dirArchivo)
+      # añadir imágenes al arreglo img_array
+      img_array_png.append(leer_imagen)
+  #Guardar Gif
+  imageio.mimwrite("./video_generate/" + name_fl + ".gif", img_array_png, 'GIF', duration=1.0)
+
 # Generate game board
 
 def who(player):
@@ -149,6 +166,8 @@ def play_game(player1, player2, visual="svg", pause=0.1, cont=0):
 def main():
     playsound("./resources/" + "start_game.wav")
     play_game(human_player, human_player)
-
+    
+    gif("game_board_gif")
 if __name__ == "__main__":
     main()
+    
